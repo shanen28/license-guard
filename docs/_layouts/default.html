@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/docs.css' | relative_url }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="{{ '/index.html' | relative_url }}">LicenseGuard Docs</a>
+      <nav class="top-nav">
+        <a href="{{ '/index.html' | relative_url }}">Home</a>
+        <a href="{{ '/getting-started.html' | relative_url }}">Getting Started</a>
+        <a href="{{ '/cli-reference.html' | relative_url }}">CLI</a>
+        <a href="{{ '/web-dashboard.html' | relative_url }}">Web UI</a>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-sticky">
+        <p class="sidebar-title">Documentation</p>
+        <a href="{{ '/index.html' | relative_url }}" {% if page.url == '/index.html' or page.url == '/' %}class="active"{% endif %}>Overview</a>
+        <a href="{{ '/getting-started.html' | relative_url }}" {% if page.url == '/getting-started.html' %}class="active"{% endif %}>Getting Started</a>
+        <a href="{{ '/cli-reference.html' | relative_url }}" {% if page.url == '/cli-reference.html' %}class="active"{% endif %}>CLI Reference</a>
+        <a href="{{ '/web-dashboard.html' | relative_url }}" {% if page.url == '/web-dashboard.html' %}class="active"{% endif %}>Web Dashboard</a>
+        <a href="{{ '/policy-guide.html' | relative_url }}" {% if page.url == '/policy-guide.html' %}class="active"{% endif %}>Policy Guide</a>
+        <a href="{{ '/pypi-drift.html' | relative_url }}" {% if page.url == '/pypi-drift.html' %}class="active"{% endif %}>PyPI Drift</a>
+        <a href="{{ '/python-api.html' | relative_url }}" {% if page.url == '/python-api.html' %}class="active"{% endif %}>Python API</a>
+        <a href="{{ '/architecture.html' | relative_url }}" {% if page.url == '/architecture.html' %}class="active"{% endif %}>Architecture</a>
+        <a href="{{ '/ci-cd.html' | relative_url }}" {% if page.url == '/ci-cd.html' %}class="active"{% endif %}>CI/CD</a>
+        <a href="{{ '/troubleshooting.html' | relative_url }}" {% if page.url == '/troubleshooting.html' %}class="active"{% endif %}>Troubleshooting</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <article class="doc-card">
+        {{ content }}
+      </article>
+
+      <nav class="pager">
+        {% if page.prev_url %}
+          <a class="pager-item" href="{{ page.prev_url | relative_url }}">
+            <span class="pager-label">Previous</span>
+            <span class="pager-title">{{ page.prev_title }}</span>
+          </a>
+        {% else %}
+          <span class="pager-item pager-item-empty"></span>
+        {% endif %}
+
+        {% if page.next_url %}
+          <a class="pager-item pager-item-next" href="{{ page.next_url | relative_url }}">
+            <span class="pager-label">Next</span>
+            <span class="pager-title">{{ page.next_title }}</span>
+          </a>
+        {% else %}
+          <span class="pager-item pager-item-empty"></span>
+        {% endif %}
+      </nav>
+    </main>
+  </div>
+
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+</body>
+</html>
