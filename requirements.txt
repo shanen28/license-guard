@@ -1,0 +1,7 @@
+pandas
+scipy
+matplotlib
+seaborn
+requests
+flask
+fastapi

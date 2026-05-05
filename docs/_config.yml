@@ -1,0 +1,4 @@
+title: LicenseGuard Documentation
+description: Scan installed Python dependencies for license compliance and drift
+theme: minima
+markdown: kramdown
