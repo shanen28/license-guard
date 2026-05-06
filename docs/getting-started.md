@@ -18,13 +18,19 @@ next_title: CLI Reference
 
 ## Install LicenseGuard
 
-### From source (this repository)
+### Install from PyPI
+
+```bash
+pip install licenseguard
+```
+
+### Install from source (this repository)
 
 ```bash
 pip install .
 ```
 
-### Development install
+### Development install (editable)
 
 ```bash
 pip install -e ".[dev]"

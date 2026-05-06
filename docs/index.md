@@ -52,6 +52,8 @@ LicenseGuard provides:
   Pipeline integration strategies and gate patterns.
 - [Troubleshooting](troubleshooting.md)  
   Common issues, diagnostics, and resolution steps.
+- [Docs Preview and GitHub Pages](docs-preview-and-pages.md)  
+  Local preview workflows and publishing setup.
 
 ## Version compatibility
 

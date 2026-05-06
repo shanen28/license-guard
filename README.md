@@ -18,10 +18,16 @@ This is not legal advice—only an engineering aid.
 ## Installation
 
 ```bash
+pip install licenseguard
+```
+
+From source (local checkout):
+
+```bash
 pip install .
 ```
 
-Development (includes pytest):
+Development editable install (includes pytest):
 
 ```bash
 pip install -e ".[dev]"

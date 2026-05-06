@@ -16,6 +16,7 @@
         <a href="{{ '/getting-started.html' | relative_url }}">Getting Started</a>
         <a href="{{ '/cli-reference.html' | relative_url }}">CLI</a>
         <a href="{{ '/web-dashboard.html' | relative_url }}">Web UI</a>
+        <a href="{{ '/docs-preview-and-pages.html' | relative_url }}">Pages</a>
       </nav>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
     </div>
@@ -25,6 +26,7 @@
     <aside class="sidebar">
       <div class="sidebar-sticky">
         <p class="sidebar-title">Documentation</p>
+        <input id="sidebar-search" class="sidebar-search" type="text" placeholder="Search pages..." aria-label="Search docs pages">
         <a href="{{ '/index.html' | relative_url }}" {% if page.url == '/index.html' or page.url == '/' %}class="active"{% endif %}>Overview</a>
         <a href="{{ '/getting-started.html' | relative_url }}" {% if page.url == '/getting-started.html' %}class="active"{% endif %}>Getting Started</a>
         <a href="{{ '/cli-reference.html' | relative_url }}" {% if page.url == '/cli-reference.html' %}class="active"{% endif %}>CLI Reference</a>
@@ -35,10 +37,15 @@
         <a href="{{ '/architecture.html' | relative_url }}" {% if page.url == '/architecture.html' %}class="active"{% endif %}>Architecture</a>
         <a href="{{ '/ci-cd.html' | relative_url }}" {% if page.url == '/ci-cd.html' %}class="active"{% endif %}>CI/CD</a>
         <a href="{{ '/troubleshooting.html' | relative_url }}" {% if page.url == '/troubleshooting.html' %}class="active"{% endif %}>Troubleshooting</a>
+        <a href="{{ '/docs-preview-and-pages.html' | relative_url }}" {% if page.url == '/docs-preview-and-pages.html' %}class="active"{% endif %}>Docs Preview and Pages</a>
       </div>
     </aside>
 
     <main class="content">
+      <section class="doc-hero">
+        <h1 class="doc-hero-title">{{ page.title }}</h1>
+        <p class="doc-hero-subtitle">{{ page.description | default: site.description }}</p>
+      </section>
       <article class="doc-card">
         {{ content }}
       </article>
@@ -63,6 +70,13 @@
         {% endif %}
       </nav>
     </main>
+
+    <aside class="toc">
+      <div class="toc-sticky">
+        <p class="toc-title">On this page</p>
+        <nav id="page-toc" class="toc-links"></nav>
+      </div>
+    </aside>
   </div>
 
   <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
