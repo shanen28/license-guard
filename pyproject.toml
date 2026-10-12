@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "licenseguard"
 # NOTE: Keep in sync with licenseguard.__init__.__version__
-version = "0.3.0"
+version = "0.3.1"
 description = "Scan installed Python packages for license compliance against a requirements file"
 readme = "README.md"
 requires-python = ">=3.9"

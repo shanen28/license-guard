@@ -1,0 +1,200 @@
+/* Custom styles for LicenseGuard documentation */
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 2rem;
+}
+
+/* Grid cards spacing */
+.grid.cards {
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Code block improvements */
+.highlight {
+  border-radius: 0.5rem;
+}
+
+/* Admonition improvements */
+.md-typeset .admonition {
+  border-radius: 0.5rem;
+  border-left-width: 4px;
+}
+
+/* Table improvements */
+.md-typeset table:not([class]) {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 600;
+}
+
+/* Button improvements */
+.md-button {
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.md-button--primary {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.md-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Section spacing */
+.md-typeset h1 {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.md-typeset h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--md-default-fg-color--lighter);
+  padding-bottom: 0.5rem;
+}
+
+.md-typeset h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Mermaid diagram improvements */
+.mermaid {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Feature cards */
+.grid.cards > * {
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid.cards > *:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Status badges for license classification */
+.status-approved,
+.status-restricted,
+.status-denied,
+.status-unknown {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.status-approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-restricted {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-denied {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-unknown {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+[data-md-color-scheme="slate"] .status-approved {
+  background-color: #1e4620;
+  color: #a3d9a5;
+}
+
+[data-md-color-scheme="slate"] .status-restricted {
+  background-color: #4d3c0e;
+  color: #ffd970;
+}
+
+[data-md-color-scheme="slate"] .status-denied {
+  background-color: #4d1f24;
+  color: #f5a3ad;
+}
+
+[data-md-color-scheme="slate"] .status-unknown {
+  background-color: #35373a;
+  color: #c7cacd;
+}
+
+/* Code annotation improvements */
+.md-typeset .highlight .gp {
+  color: var(--md-code-fg-color);
+}
+
+/* Navigation improvements */
+.md-nav__title {
+  font-weight: 600;
+}
+
+/* Search improvements */
+.md-search__form {
+  border-radius: 0.5rem;
+}
+
+/* Footer improvements */
+.md-footer {
+  margin-top: 4rem;
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 76.25em) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .hero {
+    page-break-after: always;
+  }
+
+  .grid.cards {
+    display: block;
+  }
+}

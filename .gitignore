@@ -16,6 +16,13 @@ dist/
 .pytest_cache/
 .coverage
 htmlcov/
+.licenseguard_cache.json
+
+# Local scratch work
+manual-test/
+
+# MkDocs build output
+site/
 
 # OS/editor files
 .DS_Store

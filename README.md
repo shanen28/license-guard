@@ -10,6 +10,8 @@ By default the scan is **offline** (no network). PyPI mode is opt-in.
 
 This is not legal advice—only an engineering aid.
 
+📖 **[Full documentation](https://shanen28.github.io/license-guard/)** — getting started, policy design, CLI reference, drift analysis, CI/CD integration, and architecture.
+
 ## Requirements
 
 - Python 3.9+
