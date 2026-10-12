@@ -138,32 +138,54 @@ Before submitting:
 
 ## Releasing
 
-Version numbers live in **two** places and must match:
+Releases publish automatically from a version tag. Version numbers live in
+**two** places and must match the tag, or the workflow fails before uploading:
 
 - `pyproject.toml` → `[project].version`
 - `src/licenseguard/__init__.py` → `__version__`
 
 ```bash
-# 1. Bump both files
-# 2. Run tests
-pytest -q
+# 1. Bump the version in both files, then commit
+git commit -am "Release 0.3.2"
+git push
 
-# 3. Build
-python -m build
-
-# 4. Validate
-python -m twine check dist/*
-
-# 5. Upload
-python -m twine upload dist/*
+# 2. Tag and push the tag
+git tag v0.3.2
+git push origin v0.3.2
 ```
 
-!!! danger "PyPI versions are permanent"
-    A version number can never be reused on PyPI, even after deleting a release. Verify the build with `twine check` before uploading, and consider testing against TestPyPI first:
+Pushing the tag triggers `.github/workflows/publish.yml`, which verifies the
+tag against both version strings, runs the test suite, builds the sdist and
+wheel, validates them with `twine check`, and publishes to PyPI.
 
-    ```bash
-    python -m twine upload --repository testpypi dist/*
-    ```
+!!! danger "PyPI versions are permanent"
+    A version number can never be reused on PyPI, even after deleting a
+    release. Never move or re-push a release tag — cut a new version instead.
+
+### Trusted Publishing
+
+Uploads use [PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/),
+so no API token is stored in the repository. PyPI mints a short-lived
+credential for the workflow run via OIDC.
+
+This requires a one-time setup on PyPI under the project's
+**Publishing** settings:
+
+| Field | Value |
+|---|---|
+| Owner | `shanen28` |
+| Repository | `license-guard` |
+| Workflow | `publish.yml` |
+| Environment | `pypi` |
+
+### Building locally
+
+To inspect artifacts without publishing:
+
+```bash
+python -m build
+python -m twine check dist/*
+```
 
 ---
 

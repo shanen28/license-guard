@@ -1,0 +1,74 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Verify tag matches package version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PYPROJECT=$(python -c "
+          import tomllib, pathlib
+          print(tomllib.loads(pathlib.Path('pyproject.toml').read_text())['project']['version'])
+          ")
+          DUNDER=$(python -c "
+          import re, pathlib
+          src = pathlib.Path('src/licenseguard/__init__.py').read_text()
+          print(re.search(r'__version__ = \"([^\"]+)\"', src).group(1))
+          ")
+          echo "tag=$TAG pyproject=$PYPROJECT __version__=$DUNDER"
+          if [ "$TAG" != "$PYPROJECT" ] || [ "$TAG" != "$DUNDER" ]; then
+            echo "::error::Version mismatch. Tag '$TAG' must match pyproject.toml ('$PYPROJECT') and __init__.py ('$DUNDER')."
+            exit 1
+          fi
+
+      - name: Install and test
+        run: |
+          pip install -e ".[dev]"
+          pytest -q
+
+      - name: Build distributions
+        run: |
+          pip install build twine
+          python -m build
+          python -m twine check dist/*
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/licenseguard
+    permissions:
+      # Required for Trusted Publishing: mints a short-lived OIDC token so no
+      # long-lived PyPI API token needs to be stored as a repository secret.
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - uses: pypa/gh-action-pypi-publish@release/v1
