@@ -6,6 +6,7 @@ site_url: https://shanen28.github.io/license-guard/
 repo_name: shanen28/license-guard
 repo_url: https://github.com/shanen28/license-guard
 edit_uri: edit/main/docs/
+copyright: Copyright &copy; Shanen Thomas — MIT Licensed
 
 theme:
   name: material
