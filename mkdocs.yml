@@ -69,7 +69,6 @@ markdown_extensions:
   - pymdownx.tilde
   - toc:
       permalink: true
-      baselevel: 2
       toc_depth: 3
 
 nav:
@@ -130,6 +129,9 @@ plugins:
       # during the Jekyll-to-MkDocs restructure, which fails `mkdocs build --strict`.
       enable_creation_date: false
       enable_git_follow: false
+      # Demotes this plugin's own date-lookup notices to info so they don't fail
+      # `mkdocs build --strict`, which we rely on for broken-link detection.
+      strict: false
 
 extra:
   social:
